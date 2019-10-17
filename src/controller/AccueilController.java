@@ -40,7 +40,7 @@ public class AccueilController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOGGER.log( Level.INFO, "Je suis dans le GET !" );
-        super.doGet(req, resp);
+        LOGGER.log( Level.INFO, "Request : " + req);
+        req.getRequestDispatcher(PAGE_ACCUEIL_JSP).forward(req, resp);
     }
 }
