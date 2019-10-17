@@ -7,15 +7,15 @@ public class User implements Serializable {
 	private int idUser;
 	private String login;
 	private String password;
-	private int nbConnections;
+	private int nbConnection;
 	
 	public User() {}
 	
-	public User( String login, String password, int nbConnections ) {
+	public User( String login, String password, int nbConnection ) {
 		this.idUser = idUser;
 		this.login = login;
 		this.password = password;
-		this.nbConnections = nbConnections;
+		this.nbConnection = nbConnection;
 	}
 
 	public int getIdUser() {
@@ -43,10 +43,10 @@ public class User implements Serializable {
 	}
 	
 	public int getNbConnections() {
-		return nbConnections;
+		return nbConnection;
 	}
 	
 	public void setNbConnections( int nbConnections ) {
-		this.nbConnections = nbConnections;
+		this.nbConnection = nbConnections;
 	}
 }

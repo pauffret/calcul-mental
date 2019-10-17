@@ -29,7 +29,6 @@ public class LoginBean implements Serializable {
 		User user = null;
 		try {
 			user = dao.authenticate( login, pwd );
-
 			if ( user != null ) {
 				HttpSession session = request.getSession( true );
 				//TODO récupération et incrémentation du nombre de connexions
