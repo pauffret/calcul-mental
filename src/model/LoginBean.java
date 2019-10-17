@@ -46,6 +46,7 @@ public class LoginBean implements Serializable {
 	public boolean isConnected( HttpServletRequest request ) {
 		HttpSession session = request.getSession();
 		User connectedUser = ( User ) session.getAttribute( ATT_AUTH_SESSION );
+		System.out.println(connectedUser);
 		return connectedUser != null;
 	}
 

@@ -19,6 +19,8 @@ import java.util.logging.Logger;
 public class AccueilController extends HttpServlet {
 
     private static final String PAGE_ACCUEIL_JSP = "/WEB-INF/jsp/accueil.jsp";
+    private static final String PAGE_CALCULS_JSP = "/WEB-INF/jsp/calculs.jsp";
+
     private static final Logger LOGGER = Logger.getLogger( AccueilController.class.getName() );
     private int counter;
 
@@ -39,8 +41,23 @@ public class AccueilController extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOGGER.log( Level.INFO, "Request : " + req);
-        req.getRequestDispatcher(PAGE_ACCUEIL_JSP).forward(req, resp);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        LOGGER.log( Level.INFO, "Request : " + request);
+
+        String action = request.getParameter( "action" );
+        if (null == action) {
+            request.getRequestDispatcher(PAGE_ACCUEIL_JSP).forward(request, response);
+        } else {
+
+
+            switch ( action ) {
+                case "calculs":
+                    request.getRequestDispatcher(PAGE_CALCULS_JSP).forward(request, response);
+                    break;
+                default:
+                    request.getRequestDispatcher(PAGE_ACCUEIL_JSP).forward(request, response);
+            }
+        }
+
     }
 }

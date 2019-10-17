@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="<%= request.getContextPath()%>/css/style.css"/>
 </head>
 <body>
-Hey
+<form method="POST" action="login">
+
+    <a class="button expanded" href="<c:url value="/accueil?action=calculs"/>">Commencer une nouvelle partie</a>
+</form>
 </body>
 </html>
