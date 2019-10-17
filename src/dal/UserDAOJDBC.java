@@ -23,7 +23,7 @@ public class UserDAOJDBC extends DataAccessObjectJDBC<User> {
 		return null;
 	}
 	
-	public User authenticate( String login, String password ) throws SQLException {
+	public User authenticate(String login, String password ) throws SQLException {
 		
 		User user = null;
 		try ( Connection connection = DriverManager.getConnection( dbUrl, dbLogin, dbPwd );
@@ -33,7 +33,6 @@ public class UserDAOJDBC extends DataAccessObjectJDBC<User> {
 			try ( ResultSet rs = ps.executeQuery() ) {
 				if ( rs.next() ) {
 					user = new User();
-					user.setIdUser( rs.getInt( "idUser"));
 					user.setLogin( rs.getString( "login" ) );
 					user.setPassword( rs.getString( "password" ) );
 					user.setNbConnections( rs.getInt( "connections" ) + 1 );
