@@ -15,7 +15,6 @@ public class User implements Serializable {
 		this.idUser = idUser;
 		this.login = login;
 		this.password = password;
-		this.bestScore = bestScore;
 	}
 
 	public int getIdUser() {
@@ -42,11 +41,4 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public int getBestScore() {
-		return bestScore;
-	}
-
-	public void setBestScore(int bestScore) {
-		this.bestScore = bestScore;
-	}
 }
