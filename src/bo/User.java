@@ -7,15 +7,15 @@ public class User implements Serializable {
 	private int idUser;
 	private String login;
 	private String password;
-	private int nbConnection;
+	private int bestScore;
 	
 	public User() {}
 	
-	public User( String login, String password, int nbConnection ) {
+	public User( String login, String password, int bestScore ) {
 		this.idUser = idUser;
 		this.login = login;
 		this.password = password;
-		this.nbConnection = nbConnection;
+		this.bestScore = bestScore;
 	}
 
 	public int getIdUser() {
@@ -41,12 +41,12 @@ public class User implements Serializable {
 	public void setPassword( String password ) {
 		this.password = password;
 	}
-	
-	public int getNbConnections() {
-		return nbConnection;
+
+	public int getBestScore() {
+		return bestScore;
 	}
-	
-	public void setNbConnections( int nbConnections ) {
-		this.nbConnection = nbConnections;
+
+	public void setBestScore(int bestScore) {
+		this.bestScore = bestScore;
 	}
 }

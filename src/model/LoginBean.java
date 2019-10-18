@@ -38,7 +38,6 @@ public class LoginBean implements Serializable {
 				authentResult = "Authentification échouée !!!";
 			}
 		} catch ( SQLException e ) {
-			System.out.println(e.getMessage());
 			authentResult = "Authentification échouée : Pb de connexion à la base de données !!! ";
 		}
 	}
