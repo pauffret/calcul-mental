@@ -15,5 +15,13 @@
 
     <a class="button expanded" href="<c:url value="/accueil?action=calculs"/>">Commencer une nouvelle partie</a>
 </form>
+
+
+<script src="<%= request.getContextPath()%>/vendor/foundation-6.5.1/js/vendor/jquery.js"></script>
+<script src="<%= request.getContextPath()%>/vendor/foundation-6.5.1/js/vendor/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+    document.documentElement.setAttribute('data-useragent', navigator.userAgent);
+</script>
 </body>
 </html>
