@@ -11,20 +11,29 @@ import java.util.Stack;
 
 public class GameBean {
 
-    private Double reponse;
+    private static final String reponse="reponse";
+
+    private Double reponseUser;
+
+    public Double getReponseUser() {
+        return reponseUser;
+    }
+
+    public void setReponseUser(Double reponseUser) {
+        this.reponseUser = reponseUser;
+    }
 
     public GameBean() {}
 
     public void verifReponse(HttpServletRequest request){
-
-        reponse = Double.valueOf(request.getParameter("response"));
+        reponseUser = Double.valueOf(request.getParameter(reponse));
         HttpSession session = request.getSession();
-        Stack<Double> reponseTrue = (Stack<Double>) session.getAttribute("pile");
-        // Vérif du résultat au centième près
-        if (Math.abs(reponse - reponseTrue.pop()) < 0.01){
-            session.setAttribute("nbBonneReponse", (int) session.getAttribute("nbBonneReponse") + 1);
+        Stack<Double> correctAnswer = (Stack<Double>) session.getAttribute("pile");
+        if (Math.abs(reponseUser - correctAnswer.pop()) < 0.01) {
+            System.out.println("Résultat Correct");
+            session.setAttribute("nbCorrect", (int) session.getAttribute("nbCorrect") + 1);
         }
-        session.setAttribute("questions", (int) session.getAttribute("questions") + 1);
+        session.setAttribute("nbQuestions", (int) session.getAttribute("nbQuestions") + 1);
     }
 
     public void verifBestScore(HttpServletRequest request){
