@@ -27,4 +27,20 @@ public class GameBean {
         session.setAttribute("questions", (int) session.getAttribute("questions") + 1);
     }
 
+    public void verifBestScore(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        UserDAOJDBC dao = (UserDAOJDBC) DAOFactory.getUserDAO();
+        User user = (User) session.getAttribute("isConnected");
+        if(user.getBestScore() < (int) session.getAttribute("nbCorrect")){
+            try {
+                GameBean gameBean = new GameBean();
+                user.setBestScore((Integer) session.getAttribute("nbCorrect"));
+                System.out.println("id user" + user.getIdUser());
+                dao.update(user);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
