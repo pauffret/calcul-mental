@@ -2,6 +2,7 @@ package controller;
 
 import bo.Score;
 import model.AccueilBean;
+import model.LoginBean;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +20,8 @@ import java.util.logging.Logger;
 public class AccueilController extends HttpServlet {
 
     private static final String PAGE_ACCUEIL_JSP = "/WEB-INF/jsp/accueil.jsp";
-    private static final String PAGE_CALCULS_JSP = "/WEB-INF/jsp/calculs.jsp";
+    private static final String PAGE_GAME_JSP = "/game";
+    private static final String PAGE_LOGIN_JSP ="/login";
 
     private static final Logger LOGGER = Logger.getLogger( AccueilController.class.getName() );
     private int counter;
@@ -43,21 +45,17 @@ public class AccueilController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOGGER.log( Level.INFO, "Request : " + request);
-
-        String action = request.getParameter( "action" );
-        if (null == action) {
+        LoginBean model = new LoginBean();
+        if(model.isConnected(request)) {
+            AccueilBean accueilBean = new AccueilBean();
+            accueilBean.getUsers();
+            request.setAttribute("accueilBean", accueilBean);
             request.getRequestDispatcher(PAGE_ACCUEIL_JSP).forward(request, response);
-        } else {
-
-
-            switch ( action ) {
-                case "calculs":
-                    request.getRequestDispatcher(PAGE_CALCULS_JSP).forward(request, response);
-                    break;
-                default:
-                    request.getRequestDispatcher(PAGE_ACCUEIL_JSP).forward(request, response);
-            }
+            HttpSession session = request.getSession();
+            session.setAttribute("nbQuestions",0);
+            session.setAttribute("nbCorrect",0);
+        }else {
+            response.sendRedirect(request.getContextPath() + PAGE_LOGIN_JSP);
         }
-
     }
 }

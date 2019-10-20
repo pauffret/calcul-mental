@@ -7,11 +7,10 @@ public class User implements Serializable {
 	private int idUser;
 	private String login;
 	private String password;
-	private int bestScore;
 	
 	public User() {}
 	
-	public User( String login, String password, int bestScore ) {
+	public User(int idUser, String login, String password) {
 		this.idUser = idUser;
 		this.login = login;
 		this.password = password;

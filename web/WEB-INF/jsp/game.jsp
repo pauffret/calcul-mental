@@ -12,18 +12,27 @@
 </head>
 <body>
 
+<div class="container">
     <div class="callout large primary">
         <div class="row column text-center">
             <h1>E-Calcul</h1>
-            <h3>1ère Question</h3>
         </div>
     </div>
-    <div class="row small-1 small-centered">
-        <span class="card-divider">14*2/8</span>
-        <form method="POST" action="jeu">
-
+    <div class="text-center">
+        <p>${game.pile}</p>
+        <b>Le calcul: ${game.calcul}</b>
+        <form method="post" action="game">
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="reponse_user">Votre réponse:
+                        <input id="reponse_user" name="reponse" type="number" step="any" class="validate" required>
+                    </label>
+                </div>
+                <button class="button expanded" type="submit" name="action">Valider réponse</button>
+            </div>
         </form>
     </div>
+</div>
 
 
     <script src="<%= request.getContextPath()%>/vendor/foundation-6.5.1/js/vendor/jquery.js"></script>
